@@ -7,10 +7,27 @@ addPerson(name:String, departmentID:Integer) {
 }
 
 # 获取每个部门的人员数量
-findAmountOfDepartment(departmentName:String) {
+DepartmentAmount findAmountOfDepartment(departmentName:String) {
     select d.id, max(d.name) as departmentName, count(1) as amount
     from person p
              left join department d on p.departmentID = d.id
     where d.name like concat('%', :departmentName, '%')
     group by d.id
+    order by amount, departmentName
+}
+
+# 点查
+Person findPerson(id:Integer) {
+    select p.id, p.name, d.name as department
+    from person p
+             left join department d on p.departmentID = d.id
+    where p.id = :id
+    limit 1
+}
+
+# 分页获取所有的人
+AllPerson findAllPerson*() {
+    select p.id, p.name, d.name as department
+    from person p
+             left join department d on p.departmentID = d.id
 }
