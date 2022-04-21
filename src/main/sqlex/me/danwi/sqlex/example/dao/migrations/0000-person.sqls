@@ -1,0 +1,9 @@
+-- create on 2022/4/21, by demon
+
+-- 数据库Schema描述文件, 执行DDL操作
+
+create table person
+(
+    id           integer auto_increment primary key,
+    name         varchar(255) not null
+);

@@ -1,0 +1,16 @@
+# created on 2022/4/21, by demon
+
+# 添加
+addPerson(name:String, departmentID:Integer) {
+    insert into person
+    values (null, :name, :departmentID)
+}
+
+# 获取每个部门的人员数量
+findAmountOfDepartment(departmentName:String) {
+    select d.id, max(d.name) as departmentName, count(1) as amount
+    from person p
+             left join department d on p.departmentID = d.id
+    where d.name like concat('%', :departmentName, '%')
+    group by d.id
+}

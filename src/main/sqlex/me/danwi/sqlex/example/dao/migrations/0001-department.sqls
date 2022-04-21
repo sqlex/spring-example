@@ -1,0 +1,14 @@
+-- create on 2022/4/21, by demon
+
+-- 数据库Schema描述文件, 执行DDL操作
+
+# 新建部门
+create table department
+(
+    id   integer primary key,
+    name varchar(255) not null
+);
+
+# 给person添加部门ID
+alter table person
+    add column departmentID integer not null;

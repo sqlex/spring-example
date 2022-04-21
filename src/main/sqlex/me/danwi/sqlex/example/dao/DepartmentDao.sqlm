@@ -1,0 +1,6 @@
+# created on 2022/4/21, by demon
+
+addDepartment(id:Integer, name:String) {
+    insert into department
+    values (:id, :name)
+}
