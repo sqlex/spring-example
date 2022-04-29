@@ -16,8 +16,12 @@ public class DaoFactoryConfiguration {
     }
 
     @Bean
-    public SpringDaoFactory factory() throws Exception {
+    public SpringDaoFactory factory() {
         //使用spring配置好的数据源和对应的SqlEx Repository来创建DAO工厂
-        return new SpringDaoFactory(dataSource, Repository.class);
+        SpringDaoFactory factory = new SpringDaoFactory(dataSource, Repository.class);
+        //执行迁移任务,并做数据库结构比对
+        factory.migrate();
+        factory.check();
+        return factory;
     }
 }
