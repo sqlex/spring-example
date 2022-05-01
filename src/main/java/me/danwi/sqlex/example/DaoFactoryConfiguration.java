@@ -1,6 +1,7 @@
 package me.danwi.sqlex.example;
 
 import me.danwi.sqlex.example.dao.Repository;
+import me.danwi.sqlex.spring.ImportSqlEx;
 import me.danwi.sqlex.spring.SpringDaoFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
+@ImportSqlEx(Repository.class)
 public class DaoFactoryConfiguration {
     private final DataSource dataSource;
 
