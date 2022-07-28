@@ -2,7 +2,9 @@ package me.danwi.sqlex.example.controller;
 
 import me.danwi.sqlex.core.type.PagedResult;
 import me.danwi.sqlex.example.dao.DepartmentDao;
+import me.danwi.sqlex.example.dao.Person;
 import me.danwi.sqlex.example.dao.PersonDao;
+import me.danwi.sqlex.example.dao.PersonTable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,16 +16,24 @@ import java.util.List;
 public class SqlExController {
     private final PersonDao personDao;
 
+    private final PersonTable personTable;
+
     private final DepartmentDao departmentDao;
 
-    public SqlExController(PersonDao personDao, DepartmentDao departmentDao) {
+    public SqlExController(PersonDao personDao, PersonTable personTable, DepartmentDao departmentDao) {
         this.personDao = personDao;
+        this.personTable = personTable;
         this.departmentDao = departmentDao;
     }
 
     @RequestMapping("/")
     public PagedResult<PersonDao.AllPerson> getAll(@RequestParam("pageSize") long pageSize, @RequestParam("pageNo") long pageNo) {
         return personDao.findAllPerson(pageSize, pageNo);
+    }
+
+    @RequestMapping("/paged")
+    public PagedResult<Person> paged(@RequestParam("pageSize") long pageSize, @RequestParam("pageNo") long pageNo) {
+        return personTable.select().page(pageSize, pageNo);
     }
 
     @Transactional

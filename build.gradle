@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     //SqlEx编译插件
-    id 'me.danwi.sqlex' version '0.10.4'
+    id 'me.danwi.sqlex' version '0.10.21'
 }
 
 group = 'me.danwi.sqlex'
@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     //SqlEx核心依赖
-    implementation 'me.danwi.sqlex:core:0.10.4'
+    implementation 'me.danwi.sqlex:core'
 
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
