@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     //SqlEx编译插件
-    id 'me.danwi.sqlex' version '0.14.0'
+    id 'me.danwi.sqlex' version '0.15.1'
 }
 
 group = 'me.danwi.sqlex'
